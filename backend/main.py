@@ -39,15 +39,19 @@ BULK_LIMIT = 30
 # ---------------------------------------------------------------------------
 
 def extract_pdf_text(file_bytes: bytes) -> str:
-    doc = fitz.open(stream=file_bytes, filetype="pdf")
-    print(f"[DEBUG] PDF pages: {doc.page_count}, file size: {len(file_bytes)} bytes")
-    pages = []
-    for page in doc:
-        text = page.get_text().strip()
-        print(f"[DEBUG] Page {page.number}: {len(text)} chars")
-        if text:
-            pages.append(text)
-    return "\n\n---\n\n".join(pages)
+    try:
+        doc = fitz.open(stream=file_bytes, filetype="pdf")
+        print(f"[DEBUG] PDF pages: {doc.page_count}, file size: {len(file_bytes)} bytes", flush=True)
+        pages = []
+        for page in doc:
+            text = page.get_text().strip()
+            print(f"[DEBUG] Page {page.number}: {len(text)} chars", flush=True)
+            if text:
+                pages.append(text)
+        return "\n\n---\n\n".join(pages)
+    except Exception as e:
+        print(f"[DEBUG] PDF parse error: {e}", flush=True)
+        return ""
 
 
 def extract_pptx_text(file_bytes: bytes) -> str:
@@ -202,6 +206,7 @@ async def rewrite(
     contact_department: str = Form(default=""),
 ):
     content = await file.read()
+    print(f"[DEBUG] Received file: {file.filename}, size: {len(content)} bytes", flush=True)
     deck_text = parse_deck(content, file.filename or "")
 
     if not deck_text.strip():
