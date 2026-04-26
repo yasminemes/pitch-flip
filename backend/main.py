@@ -40,9 +40,11 @@ BULK_LIMIT = 30
 
 def extract_pdf_text(file_bytes: bytes) -> str:
     doc = fitz.open(stream=file_bytes, filetype="pdf")
+    print(f"[DEBUG] PDF pages: {doc.page_count}, file size: {len(file_bytes)} bytes")
     pages = []
     for page in doc:
         text = page.get_text().strip()
+        print(f"[DEBUG] Page {page.number}: {len(text)} chars")
         if text:
             pages.append(text)
     return "\n\n---\n\n".join(pages)

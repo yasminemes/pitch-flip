@@ -2,7 +2,7 @@ fastapi
 uvicorn[standard]
 python-multipart
 anthropic
-pymupdf
+pymupdf==1.27.2
 python-pptx
 python-dotenv
 httpx
