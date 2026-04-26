@@ -4,6 +4,7 @@ import io
 import json
 import os
 from pathlib import Path
+from typing import Optional
 
 import fitz  # PyMuPDF
 import httpx
@@ -38,6 +39,36 @@ BULK_LIMIT = 30
 # Deck parsing
 # ---------------------------------------------------------------------------
 
+def _extract_pdf_via_vision(doc) -> str:
+    import base64
+    pages = []
+    for page in doc:
+        pix = page.get_pixmap(dpi=120)
+        img_b64 = base64.b64encode(pix.tobytes("png")).decode()
+        response = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=2000,
+            messages=[{
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {"type": "base64", "media_type": "image/png", "data": img_b64},
+                    },
+                    {
+                        "type": "text",
+                        "text": "Extract all text from this slide exactly as it appears. Include headings, body text, bullet points, labels, and captions. Output only the extracted text, no commentary.",
+                    },
+                ],
+            }],
+        )
+        text = response.content[0].text.strip()
+        if text:
+            pages.append(f"[Slide {page.number + 1}]\n{text}")
+        print(f"[DEBUG] Vision page {page.number}: {len(text)} chars", flush=True)
+    return "\n\n---\n\n".join(pages)
+
+
 def extract_pdf_text(file_bytes: bytes) -> str:
     try:
         doc = fitz.open(stream=file_bytes, filetype="pdf")
@@ -48,7 +79,10 @@ def extract_pdf_text(file_bytes: bytes) -> str:
             print(f"[DEBUG] Page {page.number}: {len(text)} chars", flush=True)
             if text:
                 pages.append(text)
-        return "\n\n---\n\n".join(pages)
+        if pages:
+            return "\n\n---\n\n".join(pages)
+        print("[DEBUG] No text extracted — falling back to Claude Vision OCR", flush=True)
+        return _extract_pdf_via_vision(doc)
     except Exception as e:
         print(f"[DEBUG] PDF parse error: {e}", flush=True)
         return ""
@@ -375,7 +409,7 @@ async def rewrite_bulk(
 @app.post("/slides")
 async def generate_slides(
     deck_content: str = Form(...),
-    file: UploadFile = File(default=None),
+    file: Optional[UploadFile] = File(default=None),
 ):
     """
     Accepts the generated deck markdown and optionally the original deck file.
@@ -416,8 +450,13 @@ async def generate_slides(
                     instructions=brand_instructions,
                 )
 
+                if not gen_status.task_id or gen_status.is_failed:
+                    raise Exception(gen_status.error or "NotebookLM slide generation failed.")
+
                 try:
-                    await nb_client.artifacts.wait_for_completion(nb_id, gen_status.task_id, timeout=600)
+                    final = await nb_client.artifacts.wait_for_completion(nb_id, gen_status.task_id, timeout=600)
+                    if final.is_failed:
+                        raise Exception(final.error or "NotebookLM slide generation failed.")
                 except TimeoutError:
                     pass  # attempt download anyway — may have completed server-side
 

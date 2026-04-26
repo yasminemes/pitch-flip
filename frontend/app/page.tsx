@@ -111,10 +111,14 @@ function AnimatedDemo() {
       </div>
 
       {/* Middle — transform indicator */}
-      <div className="flex flex-col items-center pt-12 gap-1.5 shrink-0">
-        <div className="w-6 h-px bg-blue-200" />
-        <span className="text-[10px] text-blue-500 font-semibold">✦ AI</span>
-        <div className="w-6 h-px bg-blue-200" />
+      <div className="flex flex-col items-center pt-12 gap-2 shrink-0">
+        <div className="w-10 h-px bg-amber-300" />
+        <div className="text-center">
+          <p className="text-sm text-amber-500 font-bold leading-tight">✦ AI</p>
+          <p className="text-sm text-amber-500 font-bold leading-tight">Research</p>
+          <p className="text-sm text-amber-500 font-bold leading-tight">Agents</p>
+        </div>
+        <div className="w-10 h-px bg-amber-300" />
       </div>
 
       {/* Right — Sales narrative (animated) */}
@@ -383,12 +387,17 @@ export default function Home() {
 
       const reader = res.body!.getReader()
       const decoder = new TextDecoder()
+      let buffer = ''
 
       while (true) {
         const { done, value } = await reader.read()
         if (done) break
-        const chunk = decoder.decode(value, { stream: true })
-        for (const line of chunk.split('\n')) {
+        buffer += decoder.decode(value, { stream: true })
+
+        const lines = buffer.split('\n')
+        buffer = lines.pop() ?? ''
+
+        for (const line of lines) {
           if (!line.startsWith('data: ')) continue
           const data = line.slice(6)
           if (data === '[DONE]') break
@@ -447,7 +456,7 @@ export default function Home() {
   const fileSizeMB = (bytes: number) => `${(bytes / 1024 / 1024).toFixed(1)} MB`
 
   return (
-    <div className="min-h-screen bg-[#F4F0E8]">
+    <div className="min-h-screen bg-gray-50">
 
       {/* ── Hero (white) ──────────────────────────────────────────── */}
       <div className="bg-white border-b border-gray-100 pb-16">
@@ -455,9 +464,9 @@ export default function Home() {
         {/* Nav — Granola-style pill */}
         <div className="max-w-4xl mx-auto px-6 pt-5">
           <div className="flex items-center justify-between bg-white border border-gray-200 rounded-2xl px-5 py-3 shadow-sm">
-            <div className="flex items-center gap-2.5">
-              <Logo size={32} />
-              <span className="font-bold text-gray-900 text-base tracking-tight">PitchFlip</span>
+            <div className="flex items-center gap-3">
+              <Logo size={44} />
+              <span className="font-bold text-gray-900 text-2xl tracking-tight">PitchFlip</span>
             </div>
             <span className="text-xs text-gray-300 uppercase tracking-widest font-medium">Private beta</span>
           </div>
@@ -483,7 +492,7 @@ export default function Home() {
 
         {/* Sample decks */}
         <div className="mb-6">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Try a sample deck</p>
+          <p className="text-sm font-semibold text-gray-700 mb-4">Try a sample deck</p>
           <div className="grid grid-cols-2 gap-4">
             {SAMPLE_DECKS.map((sample) => (
               <button
@@ -492,26 +501,42 @@ export default function Home() {
                 disabled={!!loadingSample}
                 className="text-left bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-md hover:border-gray-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <div className="relative">
-                  <img
-                    src={sample.thumb}
-                    alt={`${sample.company} deck preview`}
-                    className="w-full object-cover"
-                    style={{ aspectRatio: '16/9' }}
+                {/* Stacked slides thumbnail area */}
+                <div className="relative bg-slate-100 px-5 pt-6 pb-3">
+                  {/* Back slides */}
+                  <div
+                    className="absolute inset-x-5 top-4 bottom-2 rounded-xl bg-blue-200/50 border border-blue-300/30"
+                    style={{ transform: 'rotate(4deg) translateY(2px)' }}
                   />
-                  {loadingSample === sample.file && (
-                    <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
-                      <span className="text-gray-500 text-xs">Loading…</span>
-                    </div>
-                  )}
+                  <div
+                    className="absolute inset-x-5 top-4 bottom-2 rounded-xl bg-blue-100/70 border border-blue-200/40"
+                    style={{ transform: 'rotate(2deg) translateY(1px)' }}
+                  />
+                  {/* Main thumbnail */}
+                  <div className="relative z-10 rounded-xl overflow-hidden shadow-md">
+                    <img
+                      src={sample.thumb}
+                      alt={`${sample.company} deck preview`}
+                      className="w-full object-cover"
+                      style={{ aspectRatio: '16/9' }}
+                    />
+                    {loadingSample === sample.file && (
+                      <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
+                        <span className="text-gray-500 text-xs">Loading…</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="px-4 py-3">
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${sample.sectorColor}`}>
-                    {sample.sector}
-                  </span>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={`text-sm font-medium px-2.5 py-0.5 rounded-full ${sample.sectorColor}`}>
+                      {sample.sector}
+                    </span>
+                    <span className="text-sm text-gray-400 font-medium">{sample.company} Pitch Deck</span>
+                  </div>
                   <div className="mt-3 pt-3 border-t border-gray-100">
-                    <p className="text-xs text-gray-400 mb-0.5">Suggested prospect</p>
-                    <p className="text-xs font-medium text-gray-700">{sample.prospect.company} · {sample.prospect.title}</p>
+                    <p className="text-sm text-gray-500 mb-1">Suggested prospect</p>
+                    <p className="text-sm font-semibold text-gray-800">{sample.prospect.company} · {sample.prospect.title}</p>
                   </div>
                 </div>
               </button>
@@ -686,13 +711,9 @@ export default function Home() {
                   {copiedSingle ? 'Copied!' : 'Copy markdown'}
                 </button>
                 {!loading && (
-                  <button
-                    onClick={handleGenerateSlides}
-                    disabled={slidesLoading}
-                    className="text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {slidesLoading ? slidesStatus || 'Generating slides...' : 'Generate slides'}
-                  </button>
+                  <span className="text-sm text-gray-400 px-4 py-2">
+                    Generate slides <span className="text-xs">(coming soon)</span>
+                  </span>
                 )}
               </div>
             </div>
@@ -724,9 +745,6 @@ export default function Home() {
           </div>
         )}
 
-        {slidesError && (
-          <p className="mt-3 text-sm text-red-500">{slidesError}</p>
-        )}
 
         {/* Buyer brief */}
         {mode === 'single' && showBrief && buyerBrief && (
