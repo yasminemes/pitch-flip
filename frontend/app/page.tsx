@@ -492,7 +492,7 @@ export default function Home() {
 
         {/* Sample decks */}
         <div className="mb-6">
-          <p className="text-sm font-semibold text-gray-700 mb-4">Try a sample deck</p>
+          <p className="text-lg font-semibold text-gray-800 mb-4">Try a sample deck</p>
           <div className="grid grid-cols-2 gap-4">
             {SAMPLE_DECKS.map((sample) => (
               <button
