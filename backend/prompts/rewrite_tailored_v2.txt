@@ -1,0 +1,93 @@
+You are transforming an investor pitch deck into a personalised customer sales narrative.
+
+You have been given two intelligence briefs — one about the company selling the product, one about the prospect being sold to. Your job is to design and write the most persuasive possible deck for this specific buyer. Do not follow a fixed template. Every decision — which slides to include, in what order, how many — should be driven by what the briefs tell you about this buyer.
+
+---
+
+TARGET COMPANY: {company_name}
+BUYER: {contact_line}
+
+---
+
+COMPANY INTELLIGENCE BRIEF:
+{company_brief}
+
+---
+
+BUYER INTELLIGENCE BRIEF:
+{buyer_brief}
+
+---
+
+{brand_profile}
+
+---
+
+ORIGINAL DECK CONTENT:
+{deck_content}
+
+---
+
+STEP 1 — READ THE BRIEFS AND MAKE THESE DECISIONS BEFORE WRITING:
+
+**What is the single strongest opening hook for this buyer?**
+Choose one:
+- Their most acute individual pain (the one ranked #1 in the buyer brief) — if it's visceral and specific
+- A buying trigger from their recent developments — if something happened that creates urgency right now
+- A proof point from a company exactly like theirs — if social proof is what builds trust fastest with this buyer type
+- An industry trend they're already aware of — if it reframes the stakes before you introduce the product
+Do not default to a generic problem statement unless none of the above applies.
+
+**Which slides are actually needed for this buyer?**
+Use only slides that move this specific buyer toward yes. Available types — use any combination, in any order:
+- Opening hook (pain / trigger / trend / proof)
+- Problem or opportunity framing
+- How it works (functional walkthrough)
+- Proof / outcomes from comparable companies
+- ROI or business case
+- Why not the alternatives they're currently using
+- Team credibility (only if founder background is a purchase factor for this buyer)
+- Pricing or commercial terms (only if pricing is a likely objection or decision factor)
+- Next step / CTA
+
+**What is the right sequence?**
+The first slide hooks. The middle slides build the case by alternating between their world (pains, context) and your solution (capabilities, proof). The last slide makes the next step so obvious it removes friction. Never put the next step in the middle.
+
+**How many slides?**
+Use as many as the case requires — minimum 3, maximum 6. Do not pad to reach 6. A tight 4-slide deck is better than a diluted 6-slide deck.
+
+---
+
+STEP 2 — WRITE THE DECK:
+
+From the Company Intelligence Brief:
+- Use verified proof points preferentially over deck-only claims
+- Reflect the brand voice profile (formality, tone, key phrases from the brief)
+- Do not foreground gaps — compensate with what is strong
+
+From the Buyer Intelligence Brief:
+- Open with the individual's most acute pain — this is what makes them lean in
+- Connect company-level pains where they reinforce the individual case
+- Weave in 1–2 industry trend signals to show you understand their world
+- Frame every capability claim against their specific KPIs or career outcomes
+- Pre-empt the top 2 objections inline — place them where they'd naturally arise, not in a dedicated slide
+- If a buying trigger is present, use it as the opening or closing beat
+- Match the communication style profile (data vs. narrative, formal vs. conversational)
+
+LANGUAGE RULES:
+Remove: "platform", "disrupting", "paradigm shift", "TAM", "traction", "runway", "moat", "unfair advantage", all vision statements.
+Introduce: Second-person throughout ("you", "your team"), the buyer's industry vocabulary, concrete functionality, outcome language tied to their role.
+
+---
+
+OUTPUT FORMAT:
+- Write in markdown
+- Mark each slide: <!-- Slide N: Title | Layout: Headline + 3 bullets -->
+- Slide headline: 5–8 words, declarative — state a finding or outcome, not a topic. Model: "Contract review now takes hours, not days" or "Scope 3 data live from your ERP". Not: "How we accelerate your contract review process".
+- Each slide: headline + 2–3 tight bullets or sentences. Nothing more. No introductory waffle.
+- Below each slide's content, add a `**Sources:**` line listing the domains where claims originated (e.g. `reuters.com, gartner.com`). If a slide draws only from the pitch deck, write `**Sources:** Pitch deck`. Omit the line if no claims require attribution.
+- Missing information: [ADD: what's needed]
+- Do not invent customer stories or metrics not in the source material
+- End with one specific, friction-free next step
+
+Write the personalised customer sales narrative now:

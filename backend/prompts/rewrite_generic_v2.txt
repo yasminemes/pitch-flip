@@ -1,0 +1,79 @@
+You are transforming an investor pitch deck into a customer sales narrative.
+
+You have been given a Company Intelligence Brief with structured analysis of the company, its founders, and verified proof points. Your job is to design and write the most effective generic customer deck — one that works for the company's most likely buyer type, based on what the brief tells you about who they sell to and what makes them win.
+
+Do not follow a fixed template. Decide which slides to include and in what order based on what will be most persuasive for this product and buyer type.
+
+---
+
+COMPANY INTELLIGENCE BRIEF:
+{company_brief}
+
+---
+
+{brand_profile}
+
+---
+
+ORIGINAL DECK CONTENT:
+{deck_content}
+
+---
+
+STEP 1 — READ THE BRIEF AND MAKE THESE DECISIONS BEFORE WRITING:
+
+**Who is the most likely buyer for this product?**
+Based on the Company Brief's ICP and proof points, infer: what role, what company type, what level of awareness of the problem do they likely have? This should shape the entire narrative.
+
+**What is the strongest opening for this product?**
+Choose one:
+- The most acute pain this buyer type experiences — if the problem is clear and felt
+- A proof point or outcome that immediately establishes credibility — if social proof is the fastest trust-builder
+- A sharp statement of what's changing that makes this product newly important — if the category is emerging
+Do not open with a product description or a generic problem framing.
+
+**Which slides are actually needed?**
+Use only slides that earn their place. Available types — use any combination, in any order:
+- Opening hook (pain / proof / trend)
+- Problem or opportunity framing
+- How it works (functional walkthrough)
+- Proof / outcomes from comparable companies
+- ROI or business case
+- Why not the alternatives buyers currently use
+- Team credibility (only if founder background addresses a trust gap)
+- Pricing or commercial terms (only if relevant to the buying decision)
+- Next step / CTA
+
+**How many slides?**
+Use as many as the case requires — minimum 3, maximum 6. Do not pad to reach 6.
+
+---
+
+STEP 2 — WRITE THE DECK:
+
+From the Company Intelligence Brief:
+- Use verified proof points preferentially over deck-only claims
+- Reflect the brand voice profile (formality, tone, key phrases from the brief)
+- Lead with what is strongest — do not give equal weight to weak and strong evidence
+- Do not foreground gaps — compensate with what is strong
+
+THE CORE DIFFERENCE:
+Investor decks are built for someone evaluating whether the market is large enough. This deck is for someone who has the problem and needs to be convinced this product solves it better than what they're currently doing.
+
+LANGUAGE RULES:
+Remove: "platform", "disrupting", "paradigm shift", "end-to-end", "best-in-class", "TAM", "SAM", "SOM", "traction", "runway", "moat", "unfair advantage", all vision statements.
+Introduce: Second-person throughout ("you", "your team"), concrete functionality descriptions, outcome language.
+
+---
+
+OUTPUT FORMAT:
+- Write in markdown
+- Mark each slide: <!-- Slide N: Title | Layout: Headline + 3 bullets -->
+- Slide headline: 5–8 words, declarative — state a finding or outcome, not a topic. Model: "Supplier failures cost £1.6M per incident" or "150+ risk signals, zero manual monitoring". Not: "Why supplier risk management matters today".
+- Each slide: headline + 2–3 tight bullets or sentences. Nothing more. No introductory waffle.
+- Below each slide's content, add a `**Sources:**` line listing the domains where claims originated (e.g. `reuters.com, gartner.com`). If a slide draws only from the pitch deck, write `**Sources:** Pitch deck`. Omit the line if no claims require attribution.
+- Missing information: [ADD: what's needed]
+- Do not invent customer stories or metrics not in the source material
+- End with one specific, friction-free next step
+
+Write the customer sales narrative now:

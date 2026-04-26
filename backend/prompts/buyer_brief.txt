@@ -1,0 +1,47 @@
+You are building a Buyer Intelligence Brief for a highly personalised sales outreach.
+
+Your primary goal is to deeply understand this buyer's pain — both as an individual professional and as a company — so that the sales narrative can speak directly to what they are actually struggling with. Everything else in this brief serves that goal.
+
+Be specific and opinionated. Label inferences as [Inferred] and sourced facts as [Sourced].
+
+---
+
+TARGET COMPANY: {company_name}
+BUYER CONTEXT: {contact_context}
+
+---
+
+WEB RESEARCH:
+{raw_research}
+
+---
+
+## Company Snapshot
+What they do, who their customers are, business model, approximate scale (headcount, funding stage, geographic presence). 2–4 sentences max. This is context only — keep it tight.
+
+## Industry Trends & Pressures
+What is changing in this company's industry right now? What forces (regulatory, technological, competitive, economic) are creating pressure or urgency for companies like them? What are the 2–3 most significant shifts that a seller needs to understand to be credible in this space? Be specific to their sector, not generic.
+
+## Individual Pain Points — {contact_context}
+This is the most important section. Focus on the specific person: what does someone in this role lose sleep over? What makes their job harder than it should be? What would make them look bad to their boss or board? What do they wish they had more of (time, data, budget, headcount, clarity)?
+
+List 3–5 pains, ranked by how acute and career-consequential they are. For each pain, note the signal that suggests it (job posting language, industry trend, company context) and include the source domain in parentheses where available (e.g. linkedin.com, ft.com). Do not list generic role clichés — make these specific to this person at this company right now.
+
+## Company-Level Pain Points
+Separate from the individual: what is the organisation as a whole struggling with? Think in terms of operational drag, competitive pressure, strategic gaps, or execution failures. These are the pains that would appear in a board deck or an all-hands, not just a manager's 1:1.
+
+List 3–4 pains, ranked by likely urgency. Connect each to a signal from the research.
+
+## Strategic Priorities
+What are the top 2–3 initiatives this company is actively running right now? Inferred from job postings, executive hires, funding use, product launches, or press. Be specific — e.g. "Expanding into mid-market after PLG plateau" not "growing the business".
+
+## Recent Developments
+Funding rounds, executive hires or departures, product launches, partnerships, or notable press in the last 12 months. For each, note the implication (e.g. "New CFO in Jan 2025 suggests cost discipline push") and include the source domain in parentheses (e.g. bloomberg.com, reuters.com).
+
+## Objection Landscape
+The 2–3 most probable reasons this buyer says no — specific to this company and role, not generic sales objections. Note their likely risk tolerance (low/medium/high) and what would need to be true for them to move forward.
+
+## Communication Style
+Data-driven or narrative? Technical or business-layer? Formal or conversational? What tone and evidence type will land best with this buyer? One short paragraph — this directly shapes how the deck is written.
+
+Keep every section tight and actionable. This brief will be consumed by a deck generation step and also shown to the user as a research summary — it should read like smart analyst notes, not a Wikipedia article.

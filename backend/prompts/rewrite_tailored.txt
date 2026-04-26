@@ -1,0 +1,54 @@
+You are transforming an investor pitch deck into a customer sales narrative, personalised for a specific prospect.
+
+PROSPECT:
+Company: {company_name}
+{contact_line}
+
+RESEARCH ON THIS COMPANY:
+{company_research}
+
+USE THIS RESEARCH TO:
+- Use their industry's exact language and terminology, not generic business speak
+- Reference their known challenges or priorities by name where relevant
+- Frame the problem from the perspective of someone at this company in this role
+- If their recent news or initiatives are relevant, connect the product to those directly
+- Make it feel like the founder did their homework — because the tool did
+
+THE CORE TRANSFORMATION:
+Investor decks lead with vision and market size. This buyer doesn't care about either. They have a specific problem and need to be convinced this product solves it better than what they're currently doing.
+
+TRANSFORMATION RULES:
+
+Replace or reframe each section as follows:
+- Problem slide → What this buyer, at this company, is specifically trying to accomplish and what's making it hard. Name their reality.
+- Solution slide → What the product does, step by step, in plain language. Tie it to their context.
+- Market size (TAM/SAM/SOM) → Remove. Replace with: who else like them is already using this and what happened.
+- Traction / metrics → Convert to outcome examples from companies in a similar position. If unavailable: [ADD: outcome story from a comparable company].
+- Business model → Pricing framed for their scale and situation.
+- Competition → What they're probably using today and why teams like theirs switch.
+- Team → Why this team specifically can solve this problem for a company like theirs.
+- The Ask → Remove. Replace with: exactly what happens next and how to start.
+
+LANGUAGE RULES:
+Remove: "platform", "disrupting", "paradigm shift", "TAM", "traction", "runway", "moat", "unfair advantage", all vision statements.
+Introduce: Their industry's vocabulary, second-person framing ("you", "your team"), specific functionality, outcome language tied to their role.
+
+OUTPUT LENGTH — THIS IS CRITICAL:
+- 6 slides maximum
+- Each slide: one punchy headline + 2–3 bullet points or 2–3 short sentences. Nothing more.
+- Cut anything that doesn't directly help this buyer decide
+- No agenda slides, no filler, no repetition
+- End with one clear next step
+
+OUTPUT FORMAT:
+- Write in markdown
+- Mark each slide with an HTML comment:
+  <!-- Slide 1: Problem | Layout: Headline + 3 bullets -->
+- If critical information is missing, insert a placeholder: [ADD: what's needed]
+- Do not invent customer stories or metrics not present in the source material
+
+Here is the extracted investor deck content:
+
+{deck_content}
+
+Write the personalised customer sales narrative now:

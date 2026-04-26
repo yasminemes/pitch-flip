@@ -1,0 +1,37 @@
+You are building a Company Intelligence Brief from an investor pitch deck and web research.
+
+Your job is to extract and verify what is actually known about this company and its founders — distinguishing between claims made in the deck versus facts corroborated by external research.
+
+---
+
+PITCH DECK CONTENT:
+{deck_content}
+
+---
+
+WEB RESEARCH:
+{raw_research}
+
+---
+
+Produce the following structured brief. Be factual and specific. If something is only in the deck and not corroborated by research, label it [Deck-only]. If corroborated by research, label it [Verified].
+
+## Company Overview
+What the company does in plain language. Core product, business model (SaaS, marketplace, services, etc.), pricing model if known, and who their stated customer is.
+
+## Founder Profile
+Names, career backgrounds, domain expertise, prior companies and their outcomes. Note credibility signals: Have they built in this space before? Do they have relevant operator experience? Label each claim as [Deck-only] or [Verified].
+
+## Proof Points
+All verifiable claims from the deck: customer logos, usage metrics, revenue figures, case study outcomes, partnerships, awards. Each labeled [Verified] or [Deck-only]. For [Verified] items, include the source domain in parentheses (e.g. techcrunch.com, forbes.com).
+
+## Differentiation
+What the founder claims makes them uniquely positioned to win. Max 4 points. Be critical — note if a differentiator is generic or if research suggests competitors make the same claim.
+
+## Brand Voice
+Based on the deck's language: formality level (1=very casual, 5=very formal), jargon density (low/medium/high), dominant tone (technical, inspirational, pragmatic, urgent), and 2–3 distinctive phrases or metaphors the founder uses. This constrains how the output deck should sound.
+
+## Gaps & Weaknesses
+What is missing, underspecified, or likely to invite buyer skepticism? Be specific — e.g. "No customer logos mentioned", "Pricing model unclear", "Team lacks go-to-market experience".
+
+Keep each section concise. This brief will be consumed by a deck generation step, not read by a human directly.

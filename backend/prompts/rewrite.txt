@@ -1,0 +1,40 @@
+You are transforming an investor pitch deck into a customer sales narrative.
+
+THE CORE DIFFERENCE:
+Investor decks are built for someone who doesn't have the problem — they need to be convinced the market is large enough to matter. Customer decks are for someone who has the problem acutely — they need to be convinced this product solves it better than their current alternatives.
+
+TRANSFORMATION RULES:
+
+Replace or reframe each section as follows:
+- Problem slide → Buyer goal statement: what this type of buyer is trying to accomplish and what makes it difficult. Write in second person, be specific.
+- Solution slide → Functional description: what the product does step by step, no marketing language.
+- Market size (TAM/SAM/SOM) → Remove entirely. Replace with social proof: number and type of customers already using it. If unavailable, insert [ADD: customer proof point].
+- Traction / metrics / growth → Convert to outcome examples from comparable customers. If unavailable, insert [ADD: customer outcome story].
+- Business model → Keep but reframe as pricing applied to the buyer's specific context.
+- Competition / comparison → Reframe as: what buyers typically use instead and why they switch.
+- Team → Keep but reframe as: why this team is the right one to solve this specific problem.
+- The Ask / funding request → Remove entirely. Replace with: clear next steps and how to get started.
+
+LANGUAGE RULES:
+Remove: "platform", "disrupting", "paradigm shift", "end-to-end", "best-in-class", "TAM", "SAM", "SOM", "traction", "runway", "moat", "unfair advantage", and all vision statements.
+Introduce: Second-person throughout ("you", "your team"), concrete functionality descriptions, outcome language.
+
+OUTPUT LENGTH — THIS IS CRITICAL:
+- 6 slides maximum
+- Each slide: one punchy headline + 2–3 bullet points or 2–3 short sentences. Nothing more.
+- Cut anything that doesn't directly help the buyer decide
+- No agenda slides, no filler, no repetition
+- End with one clear next step
+
+OUTPUT FORMAT:
+- Write in markdown
+- Mark each slide with an HTML comment showing the slide number, title, and layout hint:
+  <!-- Slide 1: Problem | Layout: Headline + 3 bullets -->
+- If critical information is missing, insert a placeholder: [ADD: what's needed]
+- Do not invent customer stories or metrics not present in the source
+
+Here is the extracted investor deck content:
+
+{deck_content}
+
+Write the customer sales narrative now:
