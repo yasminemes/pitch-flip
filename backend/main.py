@@ -81,10 +81,16 @@ def extract_pdf_text(file_bytes: bytes) -> str:
                 pages.append(text)
         if pages:
             return "\n\n---\n\n".join(pages)
-        print("[DEBUG] No text extracted — falling back to Claude Vision OCR", flush=True)
-        return _extract_pdf_via_vision(doc)
     except Exception as e:
         print(f"[DEBUG] PDF parse error: {e}", flush=True)
+        return ""
+
+    print("[DEBUG] No text extracted — falling back to Claude Vision OCR", flush=True)
+    try:
+        doc = fitz.open(stream=file_bytes, filetype="pdf")
+        return _extract_pdf_via_vision(doc)
+    except Exception as e:
+        print(f"[DEBUG] Vision OCR error: {e}", flush=True)
         return ""
 
 
